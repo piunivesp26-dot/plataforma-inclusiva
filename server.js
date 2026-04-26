@@ -15,11 +15,11 @@ if (!fs.existsSync('uploads')) {
 app.use(cors());
 app.use(express.json());
 
-// 🔧 Servir arquivos estáticos
+// Servir arquivos estáticos
 app.use(express.static('public'));
 app.use('/uploads', express.static('uploads'));
 
-// 🔧 Rota principal (caso index não esteja no /public)
+// Rota principal
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
@@ -102,7 +102,7 @@ app.delete('/arquivos/:id', (req, res) => {
     });
 });
 
-// 🔥 PORTA DINÂMICA (ESSENCIAL PARA RENDER)
+// PORTA DINÂMICA (Render)
 const PORT = process.env.PORT || 3001;
 
 app.listen(PORT, () => {
